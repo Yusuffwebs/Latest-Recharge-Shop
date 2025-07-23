@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LATEST RECHARGE SHOP (SAIT LODGE)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+
+        :root {
+            --dark-bg: #0f0f12;
+            --darker-bg: #0a0a0c;
+            --card-bg: #1a1a23;
+            --primary-red: #e60000;
+            --secondary-red: #ff3333;
+            --accent-red: #ff6666;
+            --accent-blue: #00a8ff;
+            --accent-yellow: #ffcc00;
+            --text: #f5f5f7;
+            --text-secondary: #a0a0b0;
+            --success: #00c853;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--dark-bg), var(--darker-bg));
+            color: var(--text);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(230, 0, 0, 0.1) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(0, 168, 255, 0.1) 0%, transparent 40%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Header with shop name */
+        .header {
+            text-align: center;
+            margin: 10px 0 25px;
+            position: relative;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .shop-name {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+
+        .shop-name-main {
+            font-size: 2.6rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(45deg, var(--primary-red), var(--secondary-red), var(--accent-red));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            text-shadow: 0 0 15px rgba(230, 0, 0, 0.5);
+            margin-bottom: 5px;
+        }
+
+        .shop-name-main::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-red), var(--accent-red));
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(230, 0, 0, 0.7);
+        }
+
+        .shop-name-sub {
+            font-size: 1.3rem;
+            color: var(--accent-blue);
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(0, 168, 255, 0.5);
+        }
+
+        .tagline {
+            margin-top: 15px;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            background: rgba(30, 30, 40, 0.6);
+            padding: 8px 15px;
+            border-radius: 30px;
+            display: inline-block;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Service Cards */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin: 30px 0;
+        }
+
+        .service-card {
+            background: linear-gradient(145deg, #1d1d27, #16161e);
+            border-radius: 20px;
+            padding: 25px 15px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .service-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(230, 0, 0, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(230, 0, 0, 0.3);
+            border: 1px solid rgba(230, 0, 0, 0.2);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+        }
+
+        .mobile-icon { color: var(--accent-blue); }
+        .dth-icon { color: var(--accent-yellow); }
+        .gpay-icon { color: #4285F4; }
+        .phonepe-icon { color: #5D25BB; }
+        .eb-icon { color: #ff9900; }
+        .wallet-icon { color: var(--success); }
+
+        .service-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            color: var(--text);
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Features Section */
+        .features {
+            background: linear-gradient(145deg, #1d1d27, #16161e);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .features::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-red), var(--accent-red));
+        }
+
+        .features h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--accent-blue);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .features h2 i {
+            color: var(--primary-red);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: rgba(30, 30, 40, 0.5);
+            border-radius: 12px;
+            backdrop-filter: blur(5px);
+        }
+
+        .feature-item i {
+            font-size: 1.3rem;
+            color: var(--accent-red);
+            min-width: 30px;
+        }
+
+        .feature-text {
+            font-size: 0.95rem;
+        }
+
+        /* Location Section */
+        .location-section {
+            background: linear-gradient(145deg, #1d1d27, #16161e);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .location-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-yellow));
+        }
+
+        .location-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--accent-yellow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .location-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--primary-red), #cc0000);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 16px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(230, 0, 0, 0.4);
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        .location-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(230, 0, 0, 0.6);
+        }
+
+        .location-btn i {
+            font-size: 1.3rem;
+        }
+
+        /* Contact Footer */
+        .contact-footer {
+            text-align: center;
+            padding: 25px 0;
+            margin-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            padding: 10px 15px;
+            background: rgba(30, 30, 40, 0.6);
+            border-radius: 30px;
+            backdrop-filter: blur(5px);
+        }
+
+        .contact-item i {
+            color: var(--accent-red);
+            font-size: 1.1rem;
+        }
+
+        .business-hours {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(30, 30, 40, 0.6);
+            border-radius: 15px;
+            display: inline-block;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .services-grid, .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .shop-name-main {
+                font-size: 2.2rem;
+            }
+
+            .shop-name-sub {
+                font-size: 1.1rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 12px;
+                align-items: center;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .service-card, .features, .location-section {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+        .service-card:nth-child(4) { animation-delay: 0.4s; }
+        .service-card:nth-child(5) { animation-delay: 0.5s; }
+        .service-card:nth-child(6) { animation-delay: 0.6s; }
+        .features { animation-delay: 0.7s; }
+        .location-section { animation-delay: 0.8s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="shop-name">
+                <div class="shop-name-main">LATEST RECHARGE SHOP</div>
+                <div class="shop-name-sub">SAIT LODGE</div>
+            </div>
+            <div class="tagline">Your One-Stop Solution for All Digital Transactions</div>
+        </header>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon mobile-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Mobile Recharge</h3>
+                <p>Instant prepaid & postpaid recharges</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon dth-icon">
+                    <i class="fas fa-satellite-dish"></i>
+                </div>
+                <h3>DTH Recharge</h3>
+                <p>Tata Sky, Airtel, Dish TV & more</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon gpay-icon">
+                    <i class="fab fa-google-pay"></i>
+                </div>
+                <h3>GPay Transaction</h3>
+                <p>Send and receive money via Google Pay</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon phonepe-icon">
+                    <i class="fas fa-mobile"></i>
+                </div>
+                <h3>PhonePe Transaction</h3>
+                <p>All PhonePe services available</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon eb-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>EB Bill Payment</h3>
+                <p>Pay electricity bills instantly</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon wallet-icon">
+                    <i class="fas fa-wallet"></i>
+                </div>
+                <h3>All Bill Payments</h3>
+                <p>Water, Gas, Landline & more</p>
+            </div>
+        </div>
+
+        <div class="features">
+            <h2><i class="fas fa-award"></i> Why Choose Us?</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <i class="fas fa-rocket"></i>
+                    <div class="feature-text">Instant Recharge & Payments</div>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-tag"></i>
+                    <div class="feature-text">Best Prices</div>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-lock"></i>
+                    <div class="feature-text">100% Secure Transactions</div>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-history"></i>
+                    <div class="feature-text">20 Years in Service</div>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-gift"></i>
+                    <div class="feature-text">Special Offers Daily</div>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-handshake"></i>
+                    <div class="feature-text">Always Trustworthy</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="location-section">
+            <h2><i class="fas fa-map-marker-alt"></i> Find Our Shop</h2>
+            <p>Visit us at Sait Lodge for all your recharge needs</p>
+            <a href="https://maps.app.goo.gl/x76KqXuNHbaFesSJ7" class="location-btn" target="_blank">
+                <i class="fas fa-directions"></i> Get Directions
+            </a>
+        </div>
+
+        <footer class="contact-footer">
+            <div class="business-hours">
+                <i class="fas fa-clock"></i> Open: 8:00 AM - 10:00 PM (Mon-Sun)
+            </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Sait Lodge, Bazaar, 3 Veerabathara Swamy Koil St, Nagapattinam</span>
+                </div>
+
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Add animation to service cards on hover
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-8px)';
+                card.style.boxShadow = '0 12px 25px rgba(230, 0, 0, 0.3)';
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+                card.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.5)';
+            });
+
+            // Click handler for service cards
+            card.addEventListener('click', function() {
+                const serviceName = this.querySelector('h3').textContent;
+                alert(`You selected: ${serviceName}\n\nPlease visit our shop at Sait Lodge for this service!`);
+            });
+        });
+
+        // Add pulse animation to location button
+        const locationBtn = document.querySelector('.location-btn');
+        setInterval(() => {
+            locationBtn.style.transform = 'scale(1.05)';
+            setTimeout(() => {
+                locationBtn.style.transform = 'scale(1)';
+            }, 500);
+        }, 3000);
+    </script>
+</body>
+</html>
